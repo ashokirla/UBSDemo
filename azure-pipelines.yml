@@ -30,7 +30,6 @@ variables:
 stages:
 - stage: Build 
   displayName: Build
-  condition: $(foobar)= "sf"
   jobs:
   - job: myBuild1
     pool: hosted
