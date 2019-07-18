@@ -72,8 +72,8 @@ stages:
          steps:
            - download: current
            - script: |
-               Write-Host "foo = "$(foo)
-               Write-Host "foobar = "$(foobar) 
+               echo foo = $(foo)
+               echo foobar = $(foobar) 
 
 
 
