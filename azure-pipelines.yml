@@ -64,10 +64,7 @@ stages:
                 inputs:
                   azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
                   ScriptType: 'InlineScript'
-                  Inline: |
-                    # You can write your azure powershell scripts inline here. 
-                    echo hello world
-                    # You can also pass predefined and custom variables to this script using arguments
+                  azurePowerShellVersion: 'LatestVersion'
   - deployment: Deploy2
     displayName: Deploy2
     dependsOn: Deploy
