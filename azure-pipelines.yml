@@ -26,6 +26,7 @@ stages:
         runOnce:
           deploy:
             steps:
+              - downloadBuild: myJenkinsApp
               - powershell: |
                   ls $(Pipeline.Workspace)/
 
