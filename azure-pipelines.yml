@@ -64,7 +64,8 @@ stages:
                 inputs:
                   azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
                   ScriptType: 'InlineScript'
-                  azurePowerShellVersion: 'LatestVersion'
+                  preferredAzurePowerShellVersion: '1.0.1'
+
   - deployment: Deploy2
     displayName: Deploy2
     dependsOn: Deploy
