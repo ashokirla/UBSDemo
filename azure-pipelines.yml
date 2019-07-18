@@ -30,6 +30,7 @@ variables:
 stages:
 - stage: Build 
   displayName: Build
+  condition: $(foobar)='sf'
   jobs:
   - job: myBuild1
     pool: hosted
@@ -64,7 +65,7 @@ stages:
                 inputs:
                   azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
                   ScriptType: 'InlineScript'
-                  preferredAzurePowerShellVersion: '1.0.1'
+                  azurePowerShellVersion: 'LatestVersion'
 
   - deployment: Deploy2
     displayName: Deploy2
