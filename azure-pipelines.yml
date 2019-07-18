@@ -8,6 +8,12 @@ resources:
    - pipeline: MyAppCI
      source: UBSTest
 
+ builds:
+   - build: myJenkinsApp
+     type: jenkins
+     connection: Spaceworkz
+     source: UBSTest
+
 stages:
 - stage: Deploy
   displayName: Deploy stage
