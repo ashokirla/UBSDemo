@@ -1,19 +1,30 @@
 # Starter pipeline
 # Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more
+# Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
 
-trigger:
-- master
+resources:
+ pipelines:
+   - pipeline: MyAppCI
+     source: UBSTest
 
-pool:
-  vmImage: 'ubuntu-latest'
+trigger: none
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: Deploy
+  displayName: Deploy stage
+  jobs:  
+  - deployment: Deploy1
+    displayName: Download All Artifacts
+    pool: hosted
+    environment: Environment01
+    strategy:
+        runOnce:
+          deploy:
+            steps:
+              - powershell: |
+                  ls $(Pipeline.Workspace)/
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+
+
+
