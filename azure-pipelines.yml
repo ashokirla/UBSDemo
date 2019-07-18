@@ -48,6 +48,7 @@ stages:
 
 - stage: Deploy
   displayName: Deploy stage
+  dependsOn: Build
   jobs:  
   - deployment: Deploy
     displayName: Application deployment
@@ -59,11 +60,6 @@ stages:
             steps:
               - powershell: |
                   ls $(Pipeline.Workspace)/
-              - task: AzurePowerShell@4
-                inputs:
-                  azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
-                  ScriptType: 'InlineScript'
-                  azurePowerShellVersion: 'LatestVersion'
 
   - deployment: Deploy2
     displayName: Deploy2
