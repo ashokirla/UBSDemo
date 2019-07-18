@@ -2,6 +2,14 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+trigger:
+  branches:
+   include:
+     - master
+  paths:
+    exclude:
+      - README.md
+   
 
 resources:
  pipelines:
@@ -14,9 +22,33 @@ resources:
      connection: Spaceworkz
      source: UBSTest
 
+variables: 
+- name: foobar
+  value: xyz
+- group: MyVG
+
 stages:
+- stage: Build 
+  displayName: Build
+  jobs:
+  - job: myBuild1
+    pool: hosted
+    steps:
+    - download: MyAppCI
+    - task: PowerShell@2
+      inputs:
+        targetType: 'inline'
+        script: |
+          Write-Host "Hello World"
+    - task: PublishPipelineArtifact@1
+      inputs:
+        targetPath: '$(Pipeline.Workspace)'
+        artifact: 'myArt1'
+      
+
 - stage: Deploy
   displayName: Deploy stage
+  dependsOn: Build
   jobs:  
   - deployment: Deploy
     displayName: Application deployment
@@ -36,6 +68,19 @@ stages:
                     # You can write your azure powershell scripts inline here. 
                     echo hello world
                     # You can also pass predefined and custom variables to this script using arguments
+  - deployment: Deploy2
+    displayName: Deploy2
+    dependsOn: Deploy
+    environment: Environment02
+    pool: hosted
+    strategy:
+      runOnce:
+       deploy:
+         steps:
+           - download: current
+           - script: |
+               Write-Host "foo = "$(foo)
+               Write-Host "foobar = "$(foobar) 
 
 
 
