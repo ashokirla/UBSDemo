@@ -8,8 +8,6 @@ resources:
    - pipeline: MyAppCI
      source: UBSTest
 
-trigger: none
-
 stages:
 - stage: Deploy
   displayName: Deploy stage
