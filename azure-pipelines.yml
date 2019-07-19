@@ -16,11 +16,6 @@ resources:
    - pipeline: MyAppCI
      source: UBSTest
 
- builds:
-   - build: myJenkinsApp
-     type: Jenkins
-     connection: Spaceworkz
-     source: UBSTest
 
 variables: 
 - name: foobar
