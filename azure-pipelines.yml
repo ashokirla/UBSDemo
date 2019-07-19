@@ -47,7 +47,7 @@ stages:
   jobs:  
   - deployment: Deploy
     displayName: Application deployment
-    pool: hosted
+    pool: Ubuntu
     environment: Environment01
     strategy:
         runOnce:
