@@ -12,11 +12,15 @@ trigger:
    
 
 resources:
- pipelines:
-   - pipeline: MyAppCI
-     source: UBSTest
-
-
+  pipelines:
+    - pipeline: MyAppCI
+      source: UBSTest
+  builds:
+    - build: javaAppBuild
+      type: Jenkins
+      connection: Spaceworkz
+      source: UBSTest
+      
 variables: 
 - name: foobar
   value: xyz
@@ -65,7 +69,7 @@ stages:
     displayName: Deploy2
     dependsOn: Deploy
     environment: Environment02
-    pool: hosted
+    pool: Hosted VS2017
     strategy:
       runOnce:
        deploy:
