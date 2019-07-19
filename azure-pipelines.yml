@@ -47,7 +47,7 @@ stages:
   jobs:  
   - deployment: Deploy
     displayName: Application deployment
-    pool: hosted
+    pool: Hosted VS2017
     environment: Environment01
     strategy:
         runOnce:
@@ -59,7 +59,7 @@ stages:
                 inputs:
                   azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
                   ScriptType: 'InlineScript'
-                  preferredAzurePowerShellVersion: '3.0.0'
+                  azurePowerShellVersion: 'LatestVersion'
 
   - deployment: Deploy2
     displayName: Deploy2
