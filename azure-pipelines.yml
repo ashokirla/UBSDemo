@@ -15,7 +15,7 @@ resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-#      version: 20190718.2
+      version: 20190718.2
       
 #  builds:
 #    - build: javaAppBuild
