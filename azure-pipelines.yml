@@ -15,7 +15,7 @@ resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-      version: 18
+      version: 84
   builds:
     - build: javaAppBuild
       type: Jenkins
