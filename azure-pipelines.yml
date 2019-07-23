@@ -15,7 +15,7 @@ resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-#      version: 20190718.2
+      version: 20190718.2
       
 #  builds:
 #    - build: javaAppBuild
@@ -36,11 +36,8 @@ stages:
     pool: hosted
     steps:
     - download: MyAppCI
-    - task: PowerShell@2
-      inputs:
-        targetType: 'inline'
-        script: |
-          Write-Host "Hello World"
+    - powershell: |
+                  ls $(Pipeline.Workspace)/
 #    - task: PublishPipelineArtifact@1
 #      inputs:
 #        targetPath: '$(Pipeline.Workspace)'
