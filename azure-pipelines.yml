@@ -29,15 +29,15 @@ variables:
 - group: MyVG
 
 stages:
-- stage: Build 
-  displayName: Build
-  jobs:
-  - job: myBuild1
-    pool: hosted
-    steps:
-    - download: MyAppCI
-    - powershell: |
-                  ls $(Pipeline.Workspace)/
+#- stage: Build 
+#  displayName: Build
+#  jobs:
+#  - job: myBuild1
+#    pool: hosted
+#    steps:
+#    - download: MyAppCI
+#    - powershell: |
+#                  ls $(Pipeline.Workspace)/
 #    - task: PublishPipelineArtifact@1
 #      inputs:
 #        targetPath: '$(Pipeline.Workspace)'
