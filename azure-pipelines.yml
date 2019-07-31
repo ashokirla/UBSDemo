@@ -15,7 +15,7 @@ resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-      tags: Production
+      branch: master
 
       
   builds:
