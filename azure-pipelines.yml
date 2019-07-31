@@ -33,7 +33,7 @@ stages:
   displayName: Build
   jobs:
   - job: myBuild1
-    pool: Hosted VS2017
+    pool: Azure Pipelines
     steps:
     - download: MyAppCI
     - downloadBuild: javaAppBuild
@@ -56,7 +56,7 @@ stages:
   jobs:  
   - deployment: Deploy
     displayName: Application deployment
-    pool: Hosted VS2017
+    pool: Azure Pipelines
     environment: Environment01
     strategy:
         runOnce:
@@ -75,7 +75,7 @@ stages:
     displayName: Deploy2
     dependsOn: Deploy
     environment: Environment01
-    pool: Hosted VS2017
+    pool: Azure Pipelines
     strategy:
       runOnce:
        deploy:
