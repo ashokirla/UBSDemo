@@ -43,11 +43,13 @@ stages:
       inputs:
         targetPath: '$(Pipeline.Workspace)'
         artifact: 'myArt1'
-    - task: AzurePowerShell@4
+    - task: DownloadGitHubRelease@0
       inputs:
-        azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
-        ScriptType: 'InlineScript'
-        preferredAzurePowerShellVersion: '5.1.1'
+        connection: 'ashokirla'
+        userRepository: 'ashokirla/Fabrikam'
+        defaultVersionType: 'latest'
+        downloadPath: '$(System.ArtifactsDirectory)'
+
 #      
 
 - stage: Deploy
@@ -64,11 +66,13 @@ stages:
             steps:
               - powershell: |
                   ls $(Pipeline.Workspace)/
-              - task: AzurePowerShell@4
+              - task: DownloadGitHubRelease@0
                 inputs:
-                  azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
-                  ScriptType: 'InlineScript'
-                  preferredAzurePowerShellVersion: '5.1.1'
+                  connection: 'ashokirla'
+                  userRepository: 'ashokirla/Fabrikam'
+                  defaultVersionType: 'latest'
+                  downloadPath: '$(System.ArtifactsDirectory)'
+
 
 
   - deployment: Deploy2
