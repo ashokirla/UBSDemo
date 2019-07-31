@@ -43,6 +43,11 @@ stages:
       inputs:
         targetPath: '$(Pipeline.Workspace)'
         artifact: 'myArt1'
+    - task: AzurePowerShell@4
+      inputs:
+        azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
+        ScriptType: 'InlineScript'
+        preferredAzurePowerShellVersion: '5.1.1'
 #      
 
 - stage: Deploy
@@ -59,11 +64,17 @@ stages:
             steps:
               - powershell: |
                   ls $(Pipeline.Workspace)/
+              - task: AzurePowerShell@4
+                inputs:
+                  azureSubscription: 'RMPM (afc11291-9826-46be-b852-70349146ddf8)'
+                  ScriptType: 'InlineScript'
+                  preferredAzurePowerShellVersion: '5.1.1'
+
 
   - deployment: Deploy2
     displayName: Deploy2
     dependsOn: Deploy
-    environment: Environment02
+    environment: Environment01
     pool: Hosted VS2017
     strategy:
       runOnce:
