@@ -9,13 +9,17 @@ trigger:
   paths:
     exclude:
       - README.md
-   
+
+variables:
+- name: abc
+  value: $(Version)
+
 
 resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-      version: $(Version)
+      version: abc
 
       
   builds:
@@ -24,10 +28,6 @@ resources:
     connection: Spaceworkz
     source: UBSTest
       
-variables: 
-- name: foobar
-  value: xyz
-- group: MyVG
 
 stages:
 - stage: Build 
