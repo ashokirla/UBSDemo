@@ -10,16 +10,12 @@ trigger:
     exclude:
       - README.md
 
-variables:
-- name: abc
-  value: $(Version)
-
 
 resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-      version: abc
+      version: 20190718.2
 
       
   builds:
