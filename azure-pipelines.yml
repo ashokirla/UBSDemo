@@ -15,14 +15,15 @@ resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-      version: 20190718.2
+#      branch: testBranch
+#      version: 20190718.2
 
       
-  builds:
-  - build: javaAppBuild
-    type: Jenkins
-    connection: Spaceworkz
-    source: UBSTest
+  # builds:
+  # - build: javaAppBuild
+  #   type: Jenkins
+  #   connection: Spaceworkz
+  #   source: UBSTest
       
 
 stages:
@@ -33,19 +34,19 @@ stages:
     pool: Hosted VS2017
     steps:
     - download: MyAppCI
-    - downloadBuild: javaAppBuild
+  #  - downloadBuild: javaAppBuild
     - powershell: |
                   ls $(Pipeline.Workspace)/
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '$(Pipeline.Workspace)'
-        artifact: 'myArt1'
-    - task: DownloadGitHubRelease@0
-      inputs:
-        connection: 'ashokirla'
-        userRepository: 'ashokirla/Fabrikam'
-        defaultVersionType: 'latest'
-        downloadPath: '$(System.ArtifactsDirectory)'
+    # - task: PublishPipelineArtifact@1
+    #   inputs:
+    #     targetPath: '$(Pipeline.Workspace)'
+    #     artifact: 'myArt1'
+    # - task: DownloadGitHubRelease@0
+    #   inputs:
+    #     connection: 'ashokirla'
+    #     userRepository: 'ashokirla/Fabrikam'
+    #     defaultVersionType: 'latest'
+    #     downloadPath: '$(System.ArtifactsDirectory)'
 
 #      
 
@@ -63,12 +64,12 @@ stages:
             steps:
               - powershell: |
                   ls $(Pipeline.Workspace)/
-              - task: DownloadGitHubRelease@0
-                inputs:
-                  connection: 'ashokirla'
-                  userRepository: 'ashokirla/Fabrikam'
-                  defaultVersionType: 'latest'
-                  downloadPath: '$(System.ArtifactsDirectory)'
+              # - task: DownloadGitHubRelease@0
+              #   inputs:
+              #     connection: 'ashokirla'
+              #     userRepository: 'ashokirla/Fabrikam'
+              #     defaultVersionType: 'latest'
+              #     downloadPath: '$(System.ArtifactsDirectory)'
 
 
 
