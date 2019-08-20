@@ -16,7 +16,8 @@ resources:
     - pipeline: MyAppCI
       source: UBSTest
 #      branch: master
-      tags: M157
+      tags: |
+        M157
 #      version: 20190718.2
 
       
