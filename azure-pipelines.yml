@@ -9,7 +9,7 @@ resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-#      branch: master
+#      branch: masterj
 #      version: 20190718.2
 
       
