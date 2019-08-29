@@ -7,7 +7,7 @@ resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-      branch: refs/heads/testBranch
+      branch: testBranch
 #      version: 20190718.2
 
       
