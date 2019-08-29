@@ -2,17 +2,12 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-trigger:
- branches:
-   include:
-     - testBranch
-
 
 resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-#      branch: masterj
+      branch: refs/heads/testBranch
 #      version: 20190718.2
 
       
