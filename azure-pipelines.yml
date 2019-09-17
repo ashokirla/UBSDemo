@@ -22,6 +22,7 @@ stages:
 - stage: Build 
   displayName: Build
   jobs:
+  - template: $(foo)
   - job: myBuild1
     pool: Hosted VS2017
     steps:
