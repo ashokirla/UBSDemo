@@ -9,7 +9,9 @@ resources:
     - pipeline: MyAppCI
       source: ashokirla.UBSDemo (1)
       branch: master
-      trigger: true
+      trigger: 
+       branches:
+       - master
 
       
   # builds:
