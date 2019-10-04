@@ -7,7 +7,7 @@ resources:
   pipelines:
     - pipeline: MyAppCI
       source: UBSTest
-      branch: testBranch
+      branch: master
       trigger: true
 
       
