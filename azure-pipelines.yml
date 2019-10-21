@@ -14,11 +14,11 @@ resources:
        - master
 
       
-  # builds:
-  # - build: javaAppBuild
-  #   type: Jenkins
-  #   connection: Spaceworkz
-  #   source: UBSTest
+  builds:
+  - build: javaAppBuild
+    type: Jenkins
+    connection: Spaceworkz
+    source: UBSTest
       
 
 stages:
