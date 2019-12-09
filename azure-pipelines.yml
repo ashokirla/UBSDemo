@@ -11,8 +11,6 @@ stages:
   - job: myBuild1
     pool: Hosted VS2017
     steps:
-    - download: MyAppCI
-    - downloadBuild: javaAppBuild
     - powershell: |
                   ls $(Pipeline.Workspace)/
     - task: PublishPipelineArtifact@1
