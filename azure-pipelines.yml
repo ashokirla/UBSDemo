@@ -8,7 +8,7 @@ stages:
 - stage: Build 
   displayName: Build
   jobs:
-  - job: myBuild1
+  - job: myBuild
     pool: hosted
     steps:
     - publish: $(Pipeline.Workspace)/
