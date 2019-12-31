@@ -9,59 +9,8 @@ stages:
   displayName: Build
   jobs:
   - job: myBuild1
-    pool: Hosted VS2017
+    pool: hosted
     steps:
-    - powershell: |
-                  ls $(Pipeline.Workspace)/
-    - task: PublishPipelineArtifact@1
-      inputs:
-        targetPath: '$(Pipeline.Workspace)'
-        artifact: 'myArt1'
-    - task: DownloadGitHubRelease@0
-      inputs:
-        connection: 'ashokirla'
-        userRepository: 'ashokirla/Fabrikam'
-        defaultVersionType: 'latest'
-        downloadPath: '$(System.ArtifactsDirectory)'
-
-#      
-
-- stage: Deploy
-  displayName: Deploy stage
-#  dependsOn: Build
-  jobs:  
-  - deployment: Deploy
-    displayName: Application deployment
-    pool: Hosted VS2017
-    environment: Environment01
-    strategy:
-        runOnce:
-          deploy:
-            steps:
-              - powershell: |
-                  ls $(Pipeline.Workspace)/
-              - task: DownloadGitHubRelease@0
-                inputs:
-                  connection: 'ashokirla'
-                  userRepository: 'ashokirla/Fabrikam'
-                  defaultVersionType: 'latest'
-                  downloadPath: '$(System.ArtifactsDirectory)'
-
-
-
-  - deployment: Deploy2
-    displayName: Deploy2
-    dependsOn: Deploy
-    environment: Environment01
-    pool: Hosted VS2017
-    strategy:
-      runOnce:
-       deploy:
-         steps:
-           - download: none
-           #- downloadBuild: none
- 
-
-
-
-
+    - publish: $(Pipeline.Workspace)/
+      artifact: Accessories
+   
