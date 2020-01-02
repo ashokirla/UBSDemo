@@ -6,7 +6,7 @@
 
 stages:
 - stage: Build 
-  displayName: Build12
+  displayName: Build1
   jobs:
   - job: myBuild
     pool: hosted
